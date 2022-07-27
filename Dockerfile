@@ -21,8 +21,6 @@ RUN mkdir /opt/minifi/logs && touch /opt/minifi/logs/minifi-app.log
 
 RUN chown -R -L minifi:minifi /opt/minifi
 
-RUN ls /opt/minifi/
-
 USER minifi
 
 EXPOSE 3000
