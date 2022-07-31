@@ -9,6 +9,7 @@ ARG GID=1000
 ENV LANG=C.UTF-8
 
 COPY --from=mophos/minifi-api-go /app/ /app/
+COPY --from=mophos/minifi-generate-config /app_generate/ /app_generate/
 
 RUN addgroup -g $GID minifi || groupmod -n minifi `getent group $GID | cut -d: -f1`
 RUN adduser -S -H -G minifi minifi
