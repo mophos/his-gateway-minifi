@@ -1,4 +1,4 @@
-id: 86993e49-3989-36d1-0000-000000000000
+id: '{{.FLOW_UUID}}'
 name: {{.CONNECTION_NAME}}
 Processors:
 - id: 9d1e82c5-578c-34ae-0000-000000000000
@@ -15,7 +15,7 @@ Processors:
     Database Connection Pooling Service: {{.CONNECTION_UUID}}
     Max Wait Time: 0 seconds
     SQL select query: '${query:replace(${query:substringBefore(" from"):substringAfter("select
-      ")},"count(*) as count,0 as offset,CONCAT (to_char(NOW() at time zone ''ICT'', ''ddmmyyyy_HH24MISS''),''.yml'')
+      ")},"count(*) as count,0 as offset,DATE_FORMAT(now(), ''%Y%m%d_%H%i%S.yml'')
       as datetime"):replaceAll("##START_DATE",${now():toNumber():minus(${literal(86400000):multiply(${literal({{.DAYAGO}}):plus(1)})}):format("yyyy-MM-dd")}):replaceAll("##END_DATE",${now():toNumber():minus(${literal(86400000):multiply({{.DAYAGO}})}):format("yyyy-MM-dd")})} '
     dbf-default-precision: '10'
     dbf-default-scale: '0'
@@ -199,7 +199,7 @@ Processors:
     Database Connection Pooling Service: {{.CONNECTION_UUID}}
     Max Wait Time: 0 seconds
     SQL select query: '${query:replace(${query:substringBefore(" from"):substringAfter("select
-      ")},"count(*) as count,0 as offset,CONCAT (to_char(NOW() at time zone ''ICT'', ''ddmmyyyy_HH24MISS''),''.yml'')
+      ")},"count(*) as count,0 as offset,DATE_FORMAT(now(), ''%Y%m%d_%H%i%S.yml'')
       as datetime"):replaceAll("##START_DATE",${now():toNumber():minus(${literal(86400000):multiply(${literal({{.DAYAGO}}):plus(1)})}):format("yyyy-MM-dd")}):replaceAll("##END_DATE",${now():toNumber():minus(${literal(86400000):multiply({{.DAYAGO}})}):format("yyyy-MM-dd")})} '
     dbf-default-precision: '10'
     dbf-default-scale: '0'
@@ -492,7 +492,7 @@ Processors:
   Properties:
     Conflict Resolution Strategy: replace
     Create Missing Directories: 'true'
-    Directory: ./data/connection/{{.CONNECTION_NAME}}/tables/${table_name}
+    Directory: ./data/{{.CONNECTION_NAME}}/tables/${table_name}
     Group:
     Last Modified Time:
     Maximum File Count:

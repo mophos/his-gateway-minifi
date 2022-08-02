@@ -7,7 +7,7 @@ Core Properties:
   flow service write delay interval: 500 ms
   administrative yield duration: 30 sec
   bored yield duration: 10 millis
-  max concurrent threads: '{{.MAXCONCURRENTTHREADS}}'
+  max concurrent threads: {{.MAXCONCURRENTTHREADS}}
   variable registry properties: ''
 FlowFile Repository:
   implementation: org.apache.nifi.controller.repository.WriteAheadFlowFileRepository
