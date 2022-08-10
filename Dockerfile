@@ -2,7 +2,7 @@ FROM openjdk:8-jre-alpine
 
 ARG UID=1000
 ARG GID=1000
-ARG MINIFI_VERSION=1.16.0
+ARG MINIFI_VERSION=1.16.3
 ARG MIRROR=https://archive.apache.org/dist
 
 ENV MINIFI_BASE_DIR /opt/minifi
